@@ -5,6 +5,8 @@
 # prod, dev, test
 ENV=
 
+DEBUG=
+
 MONGO_USER=
 MONGO_PASSWORD=
 MONGO_HOST=

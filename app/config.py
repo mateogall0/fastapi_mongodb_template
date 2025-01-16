@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from os import getenv
-from dotenv import load_dotenv
 from abc import ABC
 from typing import Any
-
+from dotenv import load_dotenv
+import sys
 
 load_dotenv()
+
 
 class Settings(ABC):
     def __setattr__(self, name: str, value: Any) -> None:
@@ -38,6 +39,8 @@ class Test(Settings):
 
 
 def get_setting(name: str) -> Settings:
+    if 'pytest' in sys.modules:
+        return Test
     if not isinstance(name, str):
         raise TypeError('ENV must be a string')
     subclasses = Settings.__subclasses__()
