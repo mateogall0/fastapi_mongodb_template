@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, status
 
 main_router = APIRouter(tags=['Main'])
 
