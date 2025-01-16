@@ -17,5 +17,10 @@ DATABASE_NAME_TEST=
 
 ## Run
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app
+```
+
+To get options:
+```bash
+univcorn --help
 ```
