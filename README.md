@@ -26,3 +26,8 @@ To get options:
 ```bash
 univcorn --help
 ```
+
+
+## Tests
+Testing is implemented using the PyTest framework:
+
