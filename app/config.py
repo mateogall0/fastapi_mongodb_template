@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-from os import getenv
 from abc import ABC
 from typing import Any
 from dotenv import load_dotenv
 import sys
 
-load_dotenv()
-
+load_dotenv(override=True)
+from os import getenv
 
 class Settings(ABC):
     def __setattr__(self, name: str, value: Any) -> None:
