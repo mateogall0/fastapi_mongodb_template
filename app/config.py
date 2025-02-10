@@ -24,7 +24,10 @@ class Settings(ABC):
     MONGO_PORT: str = getenv("MONGO_PORT", "27017")
     DATABASE_NAME: str = getenv("DATABASE_NAME", "test_database")
 
-    MONGO_URI: str = f"mongodb://{MONGO_USER}:{MONGO_PASSWORD}@{MONGO_HOST}:{MONGO_PORT}/{DATABASE_NAME}"
+    @classmethod
+    @property
+    def MONGO_URI(cls):
+        return f"mongodb://{cls.MONGO_USER}:{cls.MONGO_PASSWORD}@{cls.MONGO_HOST}:{cls.MONGO_PORT}/{cls.DATABASE_NAME}?authSource=admin"
 
 class Prod(Settings):
     NAME = 'prod'
@@ -50,3 +53,6 @@ def get_setting(name: str) -> Settings:
     raise ValueError(f"'{name}' config not found")
 
 settings = get_setting(getenv('ENV'))
+info = f'Setting selected: {settings.NAME}'
+print(info)
+print('=' * len(info))
