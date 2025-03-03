@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from . import client
+from tests import client
 
-def test_get():
+def test_get(client):
     response = client.get("/")
     assert response.status_code == 200
