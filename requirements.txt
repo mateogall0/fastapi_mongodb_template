@@ -24,3 +24,5 @@ SQLAlchemy
 starlette
 typing_extensions
 uvicorn
+bcrypt
+PyJWT
