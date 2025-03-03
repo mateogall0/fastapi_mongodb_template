@@ -1,0 +1,3 @@
+[submodule "app/core/bita"]
+	path = app/core/bita
+	url = https://github.com/Bit-A/bita_sdk

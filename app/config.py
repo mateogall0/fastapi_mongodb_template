@@ -22,6 +22,7 @@ class Settings(ABC):
     MONGO_HOST: str = getenv("MONGO_HOST", "localhost")
     MONGO_PORT: str = getenv("MONGO_PORT", "27017")
     DATABASE_NAME: str = getenv("DATABASE_NAME", "test_database")
+    BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
 
     @classmethod
     @property
