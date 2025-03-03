@@ -1,4 +1,29 @@
-# fastapi_mongodb_template
+# FastAPI and MongoDB template
+
+## Basic architecture
+```mermaid
+graph LR
+  
+    USER(👤User)
+    DTO[📄DTO]
+    ROUTES[🚦Routes]
+    CORE[⚙️Core]
+    MODELS[🗃️Models]
+
+    %% User interacting with the DTO layer
+    USER -- "HTTP request" --> DTO
+    DTO -- "HTTP response" --> USER
+
+    %% DTO and Routes exchange
+    DTO -- "Transform request" --> ROUTES
+    ROUTES -- "Transform response" --> DTO
+
+    %% Routes and Core interaction
+    ROUTES <-- "Business logic" --> CORE
+
+    %% Routes and Models interaction
+    ROUTES <-- "Query data" --> MODELS
+```
 
 ## Env
 ```bash
@@ -31,3 +56,4 @@ Testing is implemented using the PyTest framework:
 ```bash
 pytest tests
 ```
+
