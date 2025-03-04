@@ -17,28 +17,19 @@ class Settings(ABC):
         else:
             raise AttributeError(f"'{name}' is read-only!")
     NAME = 'abstract'
-    MONGO_USER: str = getenv("MONGO_USER")
-    MONGO_PASSWORD: str = getenv("MONGO_PASSWORD")
-    MONGO_HOST: str = getenv("MONGO_HOST", "localhost")
-    MONGO_PORT: str = getenv("MONGO_PORT", "27017")
-    DATABASE_NAME: str = getenv("DATABASE_NAME", "test_database")
+    MONGO_URI: str = getenv('MONGO_URI')
     BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
-
-    @classmethod
-    @property
-    def MONGO_URI(cls):
-        return f"mongodb://{cls.MONGO_USER}:{cls.MONGO_PASSWORD}@{cls.MONGO_HOST}:{cls.MONGO_PORT}/{cls.DATABASE_NAME}?authSource=admin"
 
 class Prod(Settings):
     NAME = 'prod'
 
 class Dev(Settings):
     NAME = 'dev'
-    DATABASE_NAME = getenv("DATABASE_NAME_DEV")
+    MONGO_URI: str = getenv('MONGO_URI_DEV')
 
 class Test(Settings):
     NAME = 'test'
-    DATABASE_NAME = getenv("DATABASE_NAME_TEST")
+    MONGO_URI: str = getenv('MONGO_URI_TEST')
 
 
 def get_setting(name: str) -> Settings:
