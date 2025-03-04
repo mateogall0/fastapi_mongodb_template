@@ -3,4 +3,5 @@ from app.core.bita.sdk import BitaSDK
 from app.config import settings
 
 # Bit-A SDK declaration
+# from app.core import bita
 bita = BitaSDK(host=settings.BITA_GATEWAY_HOST)
