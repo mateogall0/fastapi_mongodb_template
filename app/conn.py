@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+When imported, this module will initialize the mongoengine connectino to
+MongoDB using the desired URI
+"""
 from mongoengine import connect
 from app.config import settings
 

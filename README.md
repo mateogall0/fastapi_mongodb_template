@@ -30,10 +30,16 @@ graph LR
 # prod, dev, test
 ENV=
 
-MONGO_URI=
-MONGO_URI_DEV=
-MONGO_URI_TEST=
+MONGO_USER=
+MONGO_PASSWORD=
+MONGO_HOST=
+MONGO_PORT=
 
+DATABASE_NAME=
+DATABASE_NAME_DEV=
+DATABASE_NAME_TEST=
+
+# obtain gateway refresh token
 BITA_SDK_INITAL_REFRESH_TOKEN=
 BITA_GATEWAY_HOST=
 ```
@@ -54,4 +60,3 @@ Testing is implemented using the PyTest framework:
 ```bash
 pytest tests
 ```
-

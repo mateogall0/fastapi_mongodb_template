@@ -17,19 +17,27 @@ class Settings(ABC):
         else:
             raise AttributeError(f"'{name}' is read-only!")
     NAME = 'abstract'
-    MONGO_URI: str = getenv('MONGO_URI')
+    MONGO_USER: str = getenv("MONGO_USER")
+    MONGO_PASSWORD: str = getenv("MONGO_PASSWORD")
+    MONGO_HOST: str = getenv("MONGO_HOST", "localhost")
+    MONGO_PORT: str = getenv("MONGO_PORT", "27017")
+    DATABASE_NAME: str = getenv("DATABASE_NAME")
     BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
+
+    @property
+    def MONGO_URI(self):
+        return f'mongodb://{self.MONGO_USER}:{self.MONGO_PASSWORD}@{self.MONGO_HOST}:{self.MONGO_PORT}/{self.DATABASE_NAME}?authSource=admin'
 
 class Prod(Settings):
     NAME = 'prod'
 
 class Dev(Settings):
     NAME = 'dev'
-    MONGO_URI: str = getenv('MONGO_URI_DEV')
+    DATABASE_NAME = getenv("DATABASE_NAME_DEV")
 
 class Test(Settings):
     NAME = 'test'
-    MONGO_URI: str = getenv('MONGO_URI_TEST')
+    DATABASE_NAME = getenv("DATABASE_NAME_TEST")
 
 
 def get_setting(name: str) -> Settings:
@@ -43,7 +51,7 @@ def get_setting(name: str) -> Settings:
             return subclass
     raise ValueError(f"'{name}' config not found")
 
-settings = get_setting(getenv('ENV'))
+settings = get_setting(getenv('ENV'))()
 info = f'Setting selected: {settings.NAME}'
 print(info)
 print('=' * len(info))
