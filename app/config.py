@@ -22,11 +22,19 @@ class Settings(ABC):
     MONGO_HOST: str = getenv("MONGO_HOST", "localhost")
     MONGO_PORT: str = getenv("MONGO_PORT", "27017")
     DATABASE_NAME: str = getenv("DATABASE_NAME")
+    DB_ARGS: str = getenv('DATABASE_ARGS', '?authSource=admin')
     BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
+    
 
     @property
     def MONGO_URI(self):
-        return f'mongodb://{self.MONGO_USER}:{self.MONGO_PASSWORD}@{self.MONGO_HOST}:{self.MONGO_PORT}/{self.DATABASE_NAME}?authSource=admin'
+        user = self.MONGO_USER
+        pwd = self.MONGO_PASSWORD
+        host = self.MONGO_HOST
+        port = self.MONGO_PORT
+        name = self.DATABASE_NAME
+        args = self.DB_ARGS
+        return f'mongodb://{user}:{pwd}@{host}:{port}/{name}{args}'
 
 class Prod(Settings):
     NAME = 'prod'

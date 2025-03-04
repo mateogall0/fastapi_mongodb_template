@@ -39,6 +39,10 @@ DATABASE_NAME=
 DATABASE_NAME_DEV=
 DATABASE_NAME_TEST=
 
+# default: '?authSource=admin'
+# can be replaced by an empty string (e.g "")
+DATABASE_ARGS=
+
 # obtain gateway refresh token
 BITA_SDK_INITAL_REFRESH_TOKEN=
 BITA_GATEWAY_HOST=
