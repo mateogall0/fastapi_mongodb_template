@@ -59,7 +59,7 @@ def get_setting(name: str) -> Settings:
             return subclass
     raise ValueError(f"'{name}' config not found")
 
-settings = get_setting(getenv('ENV'))()
+settings: Settings = get_setting(getenv('ENV'))()
 info = f'Setting selected: {settings.NAME}'
 print(info)
 print('=' * len(info))
