@@ -26,3 +26,4 @@ typing_extensions
 uvicorn
 bcrypt
 PyJWT
+pytest-asyncio

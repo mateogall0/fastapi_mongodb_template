@@ -3,7 +3,6 @@ from fastapi import FastAPI
 from app.routes import init_routes
 from app.middleware import init_middleware
 import app.conn
-import app.core
 from app.utils import DEBUG
 
 app = FastAPI(debug=DEBUG,
