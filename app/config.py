@@ -24,6 +24,7 @@ class Settings(ABC):
     DATABASE_NAME: str = getenv("DATABASE_NAME")
     DB_ARGS: str = getenv('DATABASE_ARGS', '?authSource=admin')
     BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
+    SECRET_KEY_JWT: str = getenv('SECRET_KEY_JWT')
     
 
     @property

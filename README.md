@@ -46,6 +46,8 @@ DATABASE_ARGS=
 # obtain gateway refresh token
 BITA_SDK_INITAL_REFRESH_TOKEN=
 BITA_GATEWAY_HOST=
+
+SECRET_KEY_JWT=
 ```
 
 ## Run
