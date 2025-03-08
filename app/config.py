@@ -25,10 +25,12 @@ class Settings(ABC):
     DB_ARGS: str = getenv('DATABASE_ARGS', '?authSource=admin')
     BITA_GATEWAY_HOST: str = getenv('BITA_GATEWAY_HOST')
     SECRET_KEY_JWT: str = getenv('SECRET_KEY_JWT')
-    
+    _MONGO_URI: str = getenv('MONGO_URI')
 
     @property
     def MONGO_URI(self):
+        if self._MONGO_URI is not None:
+            return self._MONGO_URI
         user = self.MONGO_USER
         pwd = self.MONGO_PASSWORD
         host = self.MONGO_HOST
