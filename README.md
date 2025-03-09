@@ -30,6 +30,9 @@ graph LR
 # prod, dev, test
 ENV=
 
+# optional, otherwise state each value
+MONGO_URI=
+
 MONGO_USER=
 MONGO_PASSWORD=
 MONGO_HOST=
