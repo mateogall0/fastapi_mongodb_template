@@ -2,7 +2,7 @@
 
 ## Basic architecture
 ```mermaid
-graph LR
+graph TB
   
     USER(👤User)
     DTO[📄DTO]
@@ -22,7 +22,7 @@ graph LR
     ROUTES <-- "Business logic" --> CORE
 
     %% Routes and Models interaction
-    ROUTES <-- "Query data" --> MODELS
+    CORE <-- "Query data" --> MODELS
 ```
 
 ## Env
