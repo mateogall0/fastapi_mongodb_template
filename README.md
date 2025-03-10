@@ -5,14 +5,18 @@
 graph TB
   
     USER(👤User)
+    MIDD(Middleware)
     DTO[📄DTO]
     ROUTES[🚦Routes]
     CORE[⚙️Core]
     MODELS[🗃️Models]
 
     %% User interacting with the DTO layer
-    USER -- "HTTP request" --> DTO
-    DTO -- "HTTP response" --> USER
+    USER -- "HTTP request" --> MIDD
+    MIDD -- "HTTP response" --> USER
+
+    %% Middleware actions before and after DTO
+    MIDD <--> DTO
 
     %% DTO and Routes exchange
     DTO -- "Transform request" --> ROUTES
