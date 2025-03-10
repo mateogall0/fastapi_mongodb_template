@@ -2,8 +2,10 @@
 from mongoengine import Document
 from typing import Type
 from bson import ObjectId
+from abc import ABC
+from app.utils.doc import doc_existence
 
-class BaseService:
+class BaseService(ABC):
     def __init__(self, model: Type[Document]) -> None:
         self.model: model = model
     
@@ -12,8 +14,8 @@ class BaseService:
         obj.save()
         return obj
     
-    def get(self, id: ObjectId) -> Document:
-        return self.model.objects(id=ObjectId(id)).first()
+    def get(self, id: ObjectId) -> Document | None:
+        return doc_existence(ObjectId(id), self.model)
     
     def delete(self, id: ObjectId) -> bool:
         obj = self.get(id)

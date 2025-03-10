@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+from tests import client
+import pytest
+
+@pytest.mark.asyncio
+async def test_generic(client):
+    from mongoengine import StringField
+    from app.core.model_service import BaseService
+    from app.models.base import Base
+    class ExampleService(BaseService):
+        pass
+    class ExampleBase(Base):
+        name = StringField(required=True)
+    service = ExampleService(ExampleBase)
+    new = service.create({'name': 'John Doe'})
+    assert new.name == 'John Doe'
+    id = new.id
+
+    stored = service.get(str(id))
+    assert stored.name == 'John Doe'
+
+    res = service.delete(str(id))
+    assert res == True
+
+    check_stored = service.get(str(id))
+    assert check_stored is None

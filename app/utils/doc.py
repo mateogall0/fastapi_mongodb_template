@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 from app.models import Base
 from fastapi import HTTPException
+from bson import ObjectId
 
 
-def doc_existence(id: str, document) -> Base | None:
+def doc_existence(id: ObjectId, document) -> Base | None:
     try:
         return document.objects.get(id=id)
     except:
