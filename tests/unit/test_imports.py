@@ -3,7 +3,7 @@ import pytest
 
 
 def test_utils():
-    from app.utils import check_doc_input, timer, DEBUG
+    from app.utils import timer, DEBUG, compare_hash
 
 @pytest.mark.asyncio
 async def test_core():
