@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, UTC
 import jwt
 from app.config import settings
 from fastapi import HTTPException, status
 
 
 def encode_payload(id: str, days=0, hours=1, minutes=0, t_type='session') -> str:
-    iat = datetime.utcnow()
+    iat = datetime.now(UTC)
     exp = iat + timedelta(days=days, hours=hours, minutes=minutes)
     payload = {
         'iat': iat,
