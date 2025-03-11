@@ -45,10 +45,12 @@ class Prod(Settings):
 class Dev(Settings):
     NAME = 'dev'
     DATABASE_NAME = getenv("DATABASE_NAME_DEV")
+    _MONGO_URI: str = getenv('MONGO_URI_DEV')
 
 class Test(Settings):
     NAME = 'test'
     DATABASE_NAME = getenv("DATABASE_NAME_TEST")
+    _MONGO_URI: str = getenv('MONGO_URI_TEST')
 
 
 def get_setting(name: str) -> Settings:

@@ -36,6 +36,8 @@ ENV=
 
 # optional, otherwise state each value
 MONGO_URI=
+MONGO_URI_DEV=
+MONGO_URI_TEST=
 
 MONGO_USER=
 MONGO_PASSWORD=
