@@ -5,9 +5,9 @@
 graph TB
   
     USER(👤User)
-    MIDD(Middleware)
-    DTO[📄DTO]
+    MIDD(🔗Middleware)
     ROUTES[🚦Routes]
+    DTO[📄DTO]
     CORE[⚙️Core]
     MODELS[🗃️Models]
 
@@ -16,14 +16,14 @@ graph TB
     MIDD -- "HTTP response" --> USER
 
     %% Middleware actions before and after DTO
-    MIDD <--> DTO
+    MIDD <--> ROUTES
 
     %% DTO and Routes exchange
     DTO -- "Transform request" --> ROUTES
     ROUTES -- "Transform response" --> DTO
 
     %% Routes and Core interaction
-    ROUTES <-- "Business logic" --> CORE
+    DTO <-- "Business logic" --> CORE
 
     %% Routes and Models interaction
     CORE <-- "Query data" --> MODELS
