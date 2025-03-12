@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
 from mongoengine import Document
-from typing import Type
-from bson import ObjectId
+from app.models import Base
 from abc import ABC
 
 class BaseService(ABC):
-    def __init__(self, model: Type[Document]) -> None:
-        self.model: model = model
+    model = Base
     
-    def create(self, data: dict) -> Document:
+    def create(self, data: dict) -> model:
         obj = self.model(**data)
         obj.save()
         return obj
     
-    def get(self, **kw) -> Document | None:
+    def get(self, **kw) -> model | None:
         try:
             return self.model.objects.get(**kw)
         except:

@@ -7,11 +7,11 @@ async def test_generic(client):
     from mongoengine import StringField
     from app.core.model_service import BaseService
     from app.models.base import Base
-    class ExampleService(BaseService):
-        pass
     class ExampleBase(Base):
         name = StringField(required=True)
-    service = ExampleService(ExampleBase)
+    class ExampleService(BaseService):
+        model = ExampleBase
+    service = ExampleService()
     new = service.create({'name': 'John Doe'})
     assert new.name == 'John Doe'
     id = new.id
