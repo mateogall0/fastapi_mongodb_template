@@ -27,3 +27,4 @@ uvicorn
 bcrypt
 PyJWT
 pytest-asyncio
+freezegun
