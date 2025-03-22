@@ -28,3 +28,4 @@ bcrypt
 PyJWT
 pytest-asyncio
 freezegun
+pydantic[email]
