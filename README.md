@@ -75,3 +75,8 @@ Testing is implemented using the PyTest framework:
 ```bash
 pytest tests
 ```
+
+## Run scripts
+```bash
+python3 -m scripts.<script_name>
+```
