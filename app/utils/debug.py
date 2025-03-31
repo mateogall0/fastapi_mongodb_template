@@ -4,8 +4,9 @@ import time
 from inspect import currentframe, getfile
 from os import getenv
 
-DEBUG_ENV_NAMES = ['dev']
+DEBUG_ENV_NAMES = ['dev', 'test']
 DEBUG = settings.NAME in DEBUG_ENV_NAMES
+TEST = settings.NAME == 'test'
 
 
 def timer(func):

@@ -2,6 +2,7 @@
 from .debug import (
     DEBUG,
     DEBUG_ENV_NAMES,
+    TEST,
     timer,
     print_debug
 )
