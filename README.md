@@ -52,8 +52,8 @@ DATABASE_NAME_TEST=
 # can be replaced by an empty string (e.g "")
 DATABASE_ARGS=
 
-# obtain gateway refresh token
-BITA_SDK_INITAL_REFRESH_TOKEN=
+# obtain gateway access token
+BITA_SDK_INITIAL_ACCESS_TOKEN=
 BITA_GATEWAY_HOST=
 
 SECRET_KEY_JWT=
