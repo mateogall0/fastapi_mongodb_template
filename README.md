@@ -1,34 +1,5 @@
 # FastAPI and MongoDB template
 
-## Basic architecture
-```mermaid
-graph TB
-  
-    USER(👤User)
-    MIDD(🔗Middleware)
-    ROUTES[🚦Routes]
-    DTO[📄DTO]
-    CORE[⚙️Core]
-    MODELS[🗃️Models]
-
-    %% User interacting with the DTO layer
-    USER -- "HTTP request" --> MIDD
-    MIDD -- "HTTP response" --> USER
-
-    %% Middleware actions before and after DTO
-    MIDD <--> ROUTES
-
-    %% DTO and Routes exchange
-    DTO -- "Transform request" --> ROUTES
-    ROUTES -- "Transform response" --> DTO
-
-    %% Routes and Core interaction
-    DTO <-- "Business logic" --> CORE
-
-    %% Routes and Models interaction
-    CORE <-- "Query data" --> MODELS
-```
-
 ## Env
 ```bash
 # prod, dev, test
