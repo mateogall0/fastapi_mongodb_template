@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+External core functionallities.
+"""
 from app.core.bita.sdk import BitaSDK
 from app.config import settings
 from os import getenv
