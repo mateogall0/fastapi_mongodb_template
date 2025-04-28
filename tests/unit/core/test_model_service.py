@@ -19,8 +19,12 @@ async def test_generic(client):
     stored = service.get(id=str(id))
     assert stored.name == 'John Doe'
 
+    updated = service.update(stored, {'name': "John Doe 2"})
+    assert updated.name == "John Doe 2"
+
     res = service.delete(id=str(id))
     assert res == True
 
     check_stored = service.get(id=str(id))
     assert check_stored is None
+
