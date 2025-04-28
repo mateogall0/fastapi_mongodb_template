@@ -5,6 +5,8 @@ from abc import ABC
 
 class BaseService(ABC):
     """
+    Base CRUD.
+
     Services that use MongoDB are intended to be inherited from this class
     to manage different documents data.
 
