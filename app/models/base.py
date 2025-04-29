@@ -10,8 +10,6 @@ class Base(Document):
     }
 
 class BaseEmbedded(EmbeddedDocument):
-    created_at = DateTimeField(default=datetime.now)
-    updated_at = DateTimeField(default=datetime.now)
     meta = {
         'abstract': True,
     }
