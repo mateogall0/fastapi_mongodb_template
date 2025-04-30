@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+from app.config import settings
+
+It will import the current settings based on environment variables.
+"""
 from abc import ABC
 from typing import Any
 from dotenv import load_dotenv
@@ -8,6 +13,9 @@ load_dotenv(override=True)
 from os import getenv
 
 class Settings(ABC):
+    """
+    Abstract settings class.
+    """
     def __setattr__(self, name: str, value: Any) -> None:
         """
         Block setting attributes after initialization.
@@ -51,7 +59,6 @@ class Test(Settings):
     NAME = 'test'
     DATABASE_NAME = getenv("DATABASE_NAME_TEST")
     _MONGO_URI: str = getenv('MONGO_URI_TEST')
-
 
 def get_setting(name: str) -> Settings:
     if 'pytest' in sys.modules:

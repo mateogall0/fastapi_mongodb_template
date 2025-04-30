@@ -5,6 +5,7 @@ from app.middleware import init_middleware
 import app.conn
 from app.utils import DEBUG
 
+# fastapi instance
 app = FastAPI(debug=DEBUG,
               title='API',
               description='Fastapi and MongoDB app')
