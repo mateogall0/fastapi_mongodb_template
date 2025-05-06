@@ -70,9 +70,9 @@ Guide to write docs.
 
 | Column Name | Data Type | Constraints | Description |
 |:--|:--|:--|:--|
-| _id | ObjectId | Auto-Generated, Required, Unique, Immutable | Unique ID for the document among the collection |
-| created_at | Timestamp | Required, Immutable, Default(NOW) | Time of indexation of document in database |
-| updated_at | Timestamp | Auto-Updated, Required, Default(NOW) | Last time the document data was updated |
+| +_id | ObjectId | Auto-Generated, Required, Unique, Immutable | Unique ID for the document among the collection |
+| +created_at | Timestamp | Required, Immutable, Default(NOW) | Time of indexation of document in database |
+| +updated_at | Timestamp | Auto-Updated, Required, Default(NOW) | Last time the document data was updated |
 ```
 
 **BSON data types:**
@@ -115,7 +115,9 @@ Guide to write docs.
 - Const
 - Dependencies()
 
-
+**Indications:**
+- Addition symbol (+) next to name for when attribute is new.
+- Substraction symbol (-) next to name for when attribute is removed.
 
 
 
