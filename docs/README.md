@@ -139,7 +139,6 @@ Guide to write docs.
   - +Unauthorized.
   - +NotFound.
   - +Conflict.
-
 - +Auth: App authentication.
   - Model: `User`.
   - Inherits: BaseService.
