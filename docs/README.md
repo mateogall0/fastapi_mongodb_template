@@ -135,10 +135,32 @@ Guide to write docs.
 ```md
 # v1.1.0
 
+- +Exceptions: Core exceptions.
+  - +Unauthorized.
+  - +NotFound.
+  - +Conflict.
+
 - +Auth: App authentication.
   - Model: `User`.
   - Inherits: BaseService.
   - Methods:
     - +Login: Check user's email existence and compare password hash.
+      - Args:
+        - email (str): Unique email.
+        - password (str): Safe password to be hashed.
+      - Returns:
+        - str: JWT with user data of type `session`.
+      - Raises:
+        - Unauthorized: Incorrect password.
+        - Notfound: Email not registered.
     - +Register: Create a new user with a unique email.
+      - Args:
+        - email (str): Unique email.
+        - password (str): User's password to be compared.
+        - name (str): User's full name.
+      - Returns:
+        - None
+      - Raises:
+        - Conflict: Email already registered.
+
 ```
