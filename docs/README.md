@@ -2,6 +2,10 @@
 
 Guide to write docs.
 
+**Indications:**
+- Addition symbol (+) next to name for when attribute is new.
+- Substraction symbol (-) next to name for when attribute is removed.
+
 ## Endpoints
 
 **Template:**
@@ -115,9 +119,20 @@ Guide to write docs.
 - Const
 - Dependencies()
 
-**Indications:**
-- Addition symbol (+) next to name for when attribute is new.
-- Substraction symbol (-) next to name for when attribute is removed.
+## Core features
+
+**Example:**
+
+```md
+# v1.1.0
+
+- +Auth: App authentication.
+  - Model: `User`.
+  - Inherits: BaseService.
+  - Methods:
+    - +Login: Check user's email existence and compare password hash.
+    - +Register: Create a new user with a unique email.
+```
 
 
 
