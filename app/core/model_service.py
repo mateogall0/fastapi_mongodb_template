@@ -30,6 +30,12 @@ class BaseService(ABC):
         except:
             return None
 
+    def get_many(self, **kw) -> list[model]:
+        try:
+            return self.model.objects(**kw)
+        except:
+            return []
+
     def update(self, doc: model, data: dict) -> model:
         doc.update(**data)
         doc.save()
