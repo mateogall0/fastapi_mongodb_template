@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from fastapi import Depends
-from . import security
 from app.utils import decode_payload
 from fastapi import HTTPException
+from fastapi.security import HTTPBearer
+
+security = HTTPBearer()
 
 def get_user_from_token(token: str):
     payload = decode_payload(token)
