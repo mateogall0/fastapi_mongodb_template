@@ -38,7 +38,6 @@ class BaseService(ABC):
 
     def update(self, doc: model, data: dict) -> model:
         doc.update(**data)
-        doc.save()
         doc.reload()
         return doc
 
