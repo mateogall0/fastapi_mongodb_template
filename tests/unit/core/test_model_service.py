@@ -22,7 +22,7 @@ async def test_generic(client):
     updated = service.update(stored, {'name': "John Doe 2"})
     assert updated.name == "John Doe 2"
 
-    res = service.delete(id=str(id))
+    res = service.delete_where(id=str(id))
     assert res == True
 
     check_stored = service.get(id=str(id))

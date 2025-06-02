@@ -42,7 +42,13 @@ class BaseService(ABC):
         doc.reload()
         return doc
 
-    def delete(self, **kw) -> bool:
+    def delete(self, doc) -> bool:
+        if doc:
+            doc.delete()
+            return True
+        return False
+
+    def delete_where(self, **kw) -> bool:
         obj = self.get(**kw)
         if obj:
             obj.delete()
