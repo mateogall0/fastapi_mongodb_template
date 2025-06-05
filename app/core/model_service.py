@@ -30,7 +30,9 @@ class BaseService(ABC):
         except:
             return None
 
-    def get_many(self, **kw) -> list[model]:
+    def get_many(self, _ignore_none=False, **kw) -> list[model]:
+        if _ignore_none:
+            kw = clear_nones(kw)
         try:
             return self.model.objects(**kw)
         except:
