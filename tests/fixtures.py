@@ -6,8 +6,10 @@ from app.conn import db
 from app.config import settings
 
 
+API_v1_PREFIX = '/v1'
+
 @pytest.fixture
 def client():
-    client = TestClient(app)
+    client = TestClient(app, f'http://testserver{API_v1_PREFIX}')
     yield client
     db.client.drop_database(settings.DATABASE_NAME)

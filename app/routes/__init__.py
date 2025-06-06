@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 from fastapi import FastAPI
-
-from .main import main_router
+from .v1 import api_v1_router
 
 
 def init_routes(app: FastAPI):
-    app.include_router(main_router)
+    app.include_router(api_v1_router)
