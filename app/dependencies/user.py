@@ -2,7 +2,20 @@
 from fastapi import Depends
 from app.core.utils import decode_payload
 from fastapi import HTTPException
-from fastapi.security import HTTPBearer
+from fastapi.security import HTTPBearer as FastapiHTTPBearer
+
+
+class HTTPBearer(FastapiHTTPBearer):
+    """
+    Custom HTTPBearer that handles lack of bearer token as a `401` status code
+    for easier authentication responses. Otherwise this would occupy the `403`
+    staus code.
+    """
+    async def __call__(self, request: Request) -> HTTPAuthorizationCredentials:
+        authorization: str = request.headers.get("Authorization")
+        if not authorization:
+            raise HTTPException(status_code=401, detail="Authorization header missing")
+        return await super().__call__(request)
 
 security = HTTPBearer()
 
