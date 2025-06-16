@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from fastapi import Depends
-from app.utils import decode_payload
+from app.core.utils import decode_payload
 from fastapi import HTTPException
 from fastapi.security import HTTPBearer
 

@@ -12,7 +12,9 @@ class BaseRepository:
         obj.save()
         return obj
     
-    def get(self, **kw) -> Base | None:
+    def get(self, _ignore_none=False, **kw) -> Base | None:
+        if _ignore_none:
+            kw = clear_nones(kw)
         try:
             return self.model.objects.get(**kw)
         except:
