@@ -27,6 +27,10 @@ async def test_generic(db):
     assert stored.name == 'John Doe 2'
     assert str(stored.updated_at) != date
 
+    sid = str(id)
+    res = await service.get_by_id(sid)
+    assert res.name == 'John Doe 2'
+
 
     res = await service.delete_where(_id=id)
     assert res == True

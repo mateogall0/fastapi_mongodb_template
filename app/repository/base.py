@@ -1,5 +1,6 @@
 from app.core.models import Base
 from datetime import datetime, timezone
+from bson import ObjectId
 
 
 def ignore_none_filter(func):
@@ -8,7 +9,6 @@ def ignore_none_filter(func):
             kw = clear_nones(kw)
         return await func(self, **kw)
     return wrapper
-
 
 class BaseRepository:
     """
@@ -36,6 +36,13 @@ class BaseRepository:
             return await cursor.to_list()
         except:
             return []
+
+    async def get_by_id(self, id) -> Base | None:
+        try:
+            id = ObjectId(id)
+        except:
+            return None
+        return await self.get(_id=id)
 
     async def update(self, doc: Base, data: dict) -> Base:
         data['updated_at'] = datetime.now(timezone.utc)
