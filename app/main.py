@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from app.routes import init_routes
 from app.middleware import init_middleware
-from app.core.conn import init_db
+from app.core.db_conn import init_db
 from app.utils import DEBUG
 
 async def lifespan(app: FastAPI):
