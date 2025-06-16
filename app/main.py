@@ -7,7 +7,7 @@ from app.utils import DEBUG
 
 async def lifespan(app: FastAPI):
     await init_db()
-
+    yield
 
 
 # fastapi instance
@@ -15,6 +15,6 @@ app = FastAPI(debug=DEBUG,
               title='API',
               description='Fastapi and MongoDB app',
               lifespan=lifespan)
-
 init_routes(app)
 init_middleware(app)
+
