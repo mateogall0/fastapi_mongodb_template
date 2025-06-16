@@ -11,7 +11,7 @@ class CRUDService:
     async def get(self, id: str):
         return await self.repo.get_by_id(id)
 
-    async def get_many(self, skip=0, limit=100, filters={}):
+    async def search(self, skip=0, limit=100, filters={}):
         return await self.repo.get_many(_ignore_none=True, **filters)[skip:skip + limit]
 
     async def update(self, obj, data: dict):

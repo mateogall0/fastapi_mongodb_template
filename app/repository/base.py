@@ -59,3 +59,10 @@ class BaseRepository:
         obj = await self.get(**kw)
         return await self.delete(obj)
 
+    @ignore_none_filter
+    async def search(self, skip=0, limit=100, **kw) -> list[Base]:
+        try:
+            cursor = self.model.find(kw).skip(skip).limit(limit)
+            return await cursor.to_list()
+        except:
+            return []
