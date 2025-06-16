@@ -15,12 +15,18 @@ async def test_generic(db):
     stored = await service.get(_id=id)
     assert stored.name == 'John Doe'
 
+    date = str(stored.updated_at)
+
     many = await service.get_many()
     assert len(many) == 1
 
-
     updated = await service.update(stored, {'name': "John Doe 2"})
     assert updated.name == "John Doe 2"
+
+    stored = await service.get(_id=id)
+    assert stored.name == 'John Doe 2'
+    assert str(stored.updated_at) != date
+
 
     res = await service.delete_where(_id=id)
     assert res == True

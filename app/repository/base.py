@@ -1,4 +1,14 @@
 from app.core.models import Base
+from datetime import datetime, timezone
+
+
+def ignore_none_filter(func):
+    async def wrapper(self, _ignore_none=False, **kw):
+        if _ignore_none:
+            kw = clear_nones(kw)
+        return await func(self, **kw)
+    return wrapper
+
 
 class BaseRepository:
     """
@@ -11,18 +21,16 @@ class BaseRepository:
         obj = self.model(**data)
         await obj.insert()
         return obj
-    
-    async def get(self, _ignore_none=False, **kw) -> Base | None:
-        if _ignore_none:
-            kw = clear_nones(kw)
+
+    @ignore_none_filter
+    async def get(self, **kw) -> Base | None:
         try:
             return await self.model.find_one(kw)
         except:
             return None
 
-    async def get_many(self, _ignore_none=False, **kw) -> list[Base]:
-        if _ignore_none:
-            kw = clear_nones(kw)
+    @ignore_none_filter
+    async def get_many(self, **kw) -> list[Base]:
         try:
             cursor = self.model.find(kw)
             return await cursor.to_list()
@@ -30,6 +38,7 @@ class BaseRepository:
             return []
 
     async def update(self, doc: Base, data: dict) -> Base:
+        data['updated_at'] = datetime.now(timezone.utc)
         await doc.update({'$set': data})
         return doc
 
