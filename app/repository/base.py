@@ -1,6 +1,7 @@
 from app.core.models import Base
 from datetime import datetime, timezone
 from bson import ObjectId
+from app.utils import clear_nones
 
 
 def ignore_none_filter(func):
