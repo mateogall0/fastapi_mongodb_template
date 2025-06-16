@@ -2,8 +2,8 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app
-from app.conn import db
-from app.config import settings
+from app.core.conn import db
+from app.core.config import settings
 
 
 API_v1_PREFIX = '/v1'

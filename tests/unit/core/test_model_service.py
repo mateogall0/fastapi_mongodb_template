@@ -5,13 +5,13 @@ import pytest
 @pytest.mark.asyncio
 async def test_generic(client):
     from mongoengine import StringField
-    from app.core.model_service import BaseService
-    from app.models.base import Base
+    from app.repository.base import BaseRepository as BaseService
+    from app.core.models.base import Base
     class ExampleBase(Base):
         name = StringField(required=True)
     class ExampleService(BaseService):
-        model = ExampleBase
-    service = ExampleService()
+        pass
+    service = ExampleService(ExampleBase)
     new = service.create({'name': 'John Doe'})
     assert new.name == 'John Doe'
     id = new.id

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from tests import client
-from app.models import Base
+from app.core.models import Base
 from bson import ObjectId
 from datetime import datetime
 

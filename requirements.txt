@@ -29,3 +29,4 @@ PyJWT
 pytest-asyncio
 freezegun
 pydantic[email]
+beanie
