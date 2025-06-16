@@ -1,16 +1,28 @@
-#!/usr/bin/env python3
 """
 When imported, this module will initialize the mongoengine connectino to
 MongoDB using the desired URI
 """
-from mongoengine import connect
+from motor.motor_asyncio import AsyncIOMotorClient
 from .config import settings
+from beanie import init_beanie
+from app.utils import TEST
 
-connect(
-    host=settings.MONGO_URI,
-    uuidRepresentation='standard',
-)
 
-from mongoengine.connection import get_db
+used_models=[]
 
-db = get_db()
+if TEST:
+    from app.core.models import Base
+
+    class ExampleBase(Base):
+        name: str
+        class Settings:
+            name = "example"
+    used_models.append(ExampleBase)
+
+
+async def init_db(models=used_models):
+    client = AsyncIOMotorClient(settings.MONGO_URI)
+    db = client.get_default_database()
+    
+    await init_beanie(database=db, document_models=models)
+    return db, client

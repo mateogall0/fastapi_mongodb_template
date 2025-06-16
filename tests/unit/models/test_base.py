@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-from tests import client
+from tests import db
 from app.core.models import Base
 from bson import ObjectId
 from datetime import datetime
+import pytest
 
-def test_basic_attrs(client):
-    class Example(Base):
-        pass
 
-    ex = Example()
-    ex.save()
+@pytest.mark.asyncio
+async def test_basic_attrs(db):
+    from app.core.conn import ExampleBase
+    ex = ExampleBase(name='test')
+    await ex.insert()
     assert isinstance(ex.id, ObjectId)
     assert isinstance(ex.created_at, datetime)
     assert isinstance(ex.updated_at, datetime)

@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-from tests import client
+from tests import client, db
+import pytest
 
 def test_get(client):
     response = client.get("/")

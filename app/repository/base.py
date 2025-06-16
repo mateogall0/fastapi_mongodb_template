@@ -7,41 +7,39 @@ class BaseRepository:
     def __init__(self, model: Base) -> None:
         self.model = model
 
-    def create(self, data: dict) -> Base:
+    async def create(self, data: dict) -> Base:
         obj = self.model(**data)
-        obj.save()
+        await obj.insert()
         return obj
     
-    def get(self, _ignore_none=False, **kw) -> Base | None:
+    async def get(self, _ignore_none=False, **kw) -> Base | None:
         if _ignore_none:
             kw = clear_nones(kw)
         try:
-            return self.model.objects.get(**kw)
+            return await self.model.find_one(kw)
         except:
             return None
 
-    def get_many(self, _ignore_none=False, **kw) -> list[Base]:
+    async def get_many(self, _ignore_none=False, **kw) -> list[Base]:
         if _ignore_none:
             kw = clear_nones(kw)
         try:
-            return self.model.objects(**kw)
+            cursor = self.model.find(kw)
+            return await cursor.to_list()
         except:
             return []
 
-    def update(self, doc: Base, data: dict) -> Base:
-        doc.update(**data)
-        doc.reload()
+    async def update(self, doc: Base, data: dict) -> Base:
+        await doc.update({'$set': data})
         return doc
 
-    def delete(self, doc) -> bool:
+    async def delete(self, doc) -> bool:
         if doc:
-            doc.delete()
+            await doc.delete()
             return True
         return False
 
-    def delete_where(self, **kw) -> bool:
-        obj = self.get(**kw)
-        if obj:
-            obj.delete()
-            return True
-        return False
+    async def delete_where(self, **kw) -> bool:
+        obj = await self.get(**kw)
+        return await self.delete(obj)
+
