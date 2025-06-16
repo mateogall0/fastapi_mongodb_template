@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-from fastapi import Depends
-from app.core.utils import decode_payload
+from fastapi import Depends, Request
+from app.core.token import decode_payload
 from fastapi import HTTPException
-from fastapi.security import HTTPBearer as FastapiHTTPBearer
+from fastapi.security import HTTPBearer as FastapiHTTPBearer, HTTPAuthorizationCredentials
 
 
 class HTTPBearer(FastapiHTTPBearer):
