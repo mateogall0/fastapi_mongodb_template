@@ -16,5 +16,5 @@ async def db():
 
 @pytest.fixture
 def client(db):
-    client = TestClient(app, base_url=f'http://testserver{API_V1_PREFIX}')
-    yield client
+    with TestClient(app, base_url=f"http://testserver{API_V1_PREFIX}") as client:
+        yield client
