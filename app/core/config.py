@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 from app.config import settings
 
@@ -8,9 +7,9 @@ from abc import ABC
 from typing import Any
 from dotenv import load_dotenv
 import sys
+from os import getenv
 
 load_dotenv(override=True)
-from os import getenv
 
 class Settings(ABC):
     """

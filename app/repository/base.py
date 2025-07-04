@@ -2,7 +2,6 @@ from app.infra.models import BaseDoc
 from datetime import datetime, timezone
 from bson import ObjectId
 from app.utils import clear_nones
-from abc import ABC, abstractmethod
 from app.core.repositories import Repository
 
 
@@ -31,7 +30,7 @@ class MongoRepository(Repository):
     async def get(self, **kw) -> BaseDoc | None:
         try:
             return await self.model.find_one(kw)
-        except:
+        except Exception:
             return None
 
     @ignore_none_filter
@@ -39,13 +38,13 @@ class MongoRepository(Repository):
         try:
             cursor = self.model.find(kw)
             return await cursor.to_list()
-        except:
+        except Exception:
             return []
 
     async def get_by_id(self, id) -> BaseDoc | None:
         try:
             id = ObjectId(id)
-        except:
+        except Exception:
             return None
         return await self.get(_id=id)
 
@@ -69,5 +68,5 @@ class MongoRepository(Repository):
         try:
             cursor = self.model.find(kw).skip(skip).limit(limit)
             return await cursor.to_list()
-        except:
+        except Exception:
             return []

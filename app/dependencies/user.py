@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from fastapi import Depends, Request
-from app.core.token import decode_payload
+from app.infra.token import decode_payload
 from fastapi import HTTPException
 from fastapi.security import HTTPBearer as FastapiHTTPBearer, HTTPAuthorizationCredentials
 
@@ -28,7 +28,7 @@ def get_user_from_token(token: str):
     """
     User deserialization logic here
     """
-    raise NotImplementedError()
+    raise NotImplementedError('Nothing to do with' + user_id)
 
 def get_user(authorization = Depends(security)):
     return get_user_from_token(authorization.credentials)

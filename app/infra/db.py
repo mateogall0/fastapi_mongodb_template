@@ -7,7 +7,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from app.core.config import settings
 from beanie import init_beanie
 from app.utils import TEST
-from .models import *
 
 
 used_models=[]

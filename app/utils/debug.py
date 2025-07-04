@@ -2,7 +2,6 @@
 from app.core.config import settings
 import time
 from inspect import currentframe, getfile
-from os import getenv
 
 DEBUG_ENV_NAMES = ['dev', 'test']
 DEBUG = settings.NAME in DEBUG_ENV_NAMES
@@ -38,7 +37,8 @@ def print_debug(key='Print debug', value=None, separator='=',
     Print big values of types like dictionaries with keys tp ease debugging
     process.
     """
-    if not DEBUG: return
+    if not DEBUG:
+        return
     frame = currentframe().f_back
     file_name = getfile(frame)
     line_number = frame.f_lineno

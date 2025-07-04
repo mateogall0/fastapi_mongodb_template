@@ -44,7 +44,7 @@ univcorn --help
 ## Tests
 Testing is implemented using the PyTest framework:
 ```bash
-pytest tests
+pytest
 ```
 
 ## Run scripts
