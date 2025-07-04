@@ -1,19 +1,21 @@
+
 """
 When imported, this module will initialize the mongoengine connectino to
 MongoDB using the desired URI
 """
 from motor.motor_asyncio import AsyncIOMotorClient
-from .config import settings
+from app.core.config import settings
 from beanie import init_beanie
 from app.utils import TEST
+from .models import *
 
 
 used_models=[]
 
 if TEST:
-    from app.core.models import Base
+    from app.infra.models import BaseDoc
 
-    class ExampleBase(Base):
+    class ExampleBase(BaseDoc):
         name: str
         class Settings:
             name = "example"

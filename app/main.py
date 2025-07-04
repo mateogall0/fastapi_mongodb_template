@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from app.routes import init_routes
 from app.middleware import init_middleware
-from app.core.db_conn import init_db
+from app.infra.db import init_db
 from app.utils import DEBUG
 from contextlib import asynccontextmanager
 

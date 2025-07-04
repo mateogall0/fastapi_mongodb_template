@@ -8,7 +8,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_basic_attrs(db):
-    from app.core.db_conn import ExampleBase
+    from app.infra.db import ExampleBase
     ex = ExampleBase(name='test')
     await ex.insert()
     assert isinstance(ex.id, ObjectId)

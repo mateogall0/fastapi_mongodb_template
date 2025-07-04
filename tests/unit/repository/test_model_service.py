@@ -6,7 +6,7 @@ async def test_generic(db):
     from app.repository.base import MongoRepository as BaseService
     class ExampleService(BaseService):
         pass
-    from app.core.db_conn import ExampleBase
+    from app.infra.db import ExampleBase
     service = ExampleService(ExampleBase)
     new = await service.create({'name': 'John Doe'})
     assert new.name == 'John Doe'
