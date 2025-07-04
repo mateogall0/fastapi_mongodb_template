@@ -2,6 +2,7 @@ from app.core.models import Base
 from datetime import datetime, timezone
 from bson import ObjectId
 from app.utils import clear_nones
+from abc import ABC, abstractmethod
 
 
 def ignore_none_filter(func):
@@ -14,6 +15,23 @@ def ignore_none_filter(func):
 class BaseRepository:
     """
     Base CRUD.
+    """
+    @abstractmethod
+    async def create(self, *ag, **kw): pass
+
+    @abstractmethod
+    async def get(self, **kw): pass
+
+    @abstractmethod
+    async def update(self, *ag, **kw): pass
+
+    @abstractmethod
+    async def delete(self, *ag, **kw): pass
+
+
+class MongoRepository(BaseRepository):
+    """
+    Base MongoDB repository.
     """
     def __init__(self, model: Base) -> None:
         self.model = model

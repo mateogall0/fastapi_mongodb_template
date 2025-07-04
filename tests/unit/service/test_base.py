@@ -5,8 +5,8 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_crud0(db):
-    from app.repository.base import BaseRepository
-    class ExampleRepository(BaseRepository):
+    from app.repository.base import MongoRepository
+    class ExampleRepository(MongoRepository):
         pass
     from app.core.db_conn import ExampleBase
     repo = ExampleRepository(ExampleBase)
