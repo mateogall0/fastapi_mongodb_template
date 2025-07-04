@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
-External core functionallities.
+External functionallities.
 """
-from app.core.bita.sdk import BitaSDK
-from .config import settings
+from app.infra.external.bita.sdk import BitaSDK
+from app.core.config import settings
 from os import getenv
 from app.utils import TEST
 

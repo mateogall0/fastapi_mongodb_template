@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from bson import ObjectId
 from app.utils import clear_nones
 from abc import ABC, abstractmethod
+from app.core.repositories import Repository
 
 
 def ignore_none_filter(func):
@@ -12,24 +13,9 @@ def ignore_none_filter(func):
         return await func(self, **kw)
     return wrapper
 
-class BaseRepository:
-    """
-    Base CRUD.
-    """
-    @abstractmethod
-    async def create(self, *ag, **kw): pass
-
-    @abstractmethod
-    async def get(self, **kw): pass
-
-    @abstractmethod
-    async def update(self, *ag, **kw): pass
-
-    @abstractmethod
-    async def delete(self, *ag, **kw): pass
 
 
-class MongoRepository(BaseRepository):
+class MongoRepository(Repository):
     """
     Base MongoDB repository.
     """

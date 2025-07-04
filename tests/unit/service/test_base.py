@@ -1,5 +1,5 @@
 from tests import db
-from app.service.base import CRUDService
+from app.service.base import MongoService
 import pytest
 
 
@@ -11,7 +11,7 @@ async def test_crud0(db):
     from app.infra.db import ExampleBase
     repo = ExampleRepository(ExampleBase)
 
-    service = CRUDService(repo)
+    service = MongoService(repo)
 
     new = await service.create({'name': 'John Doe'})
     assert new.name == 'John Doe'

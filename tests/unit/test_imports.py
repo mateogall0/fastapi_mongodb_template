@@ -7,4 +7,4 @@ def test_utils():
 
 @pytest.mark.asyncio
 async def test_core():
-    from app.core import bita
+    from app.core.config import settings
