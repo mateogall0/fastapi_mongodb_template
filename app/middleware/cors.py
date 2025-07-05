@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.security.origins import read_origins
+from app.infra.security.origins import read_origins
 
 
 args = {
