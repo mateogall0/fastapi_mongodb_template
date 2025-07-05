@@ -7,4 +7,4 @@ def test_utils():
 
 @pytest.mark.asyncio
 async def test_core():
-    from app.core.config import settings
+    from app.core.exceptions import Conflict

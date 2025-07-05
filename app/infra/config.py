@@ -5,11 +5,11 @@ It will import the current settings based on environment variables.
 """
 from abc import ABC
 from typing import Any
-from dotenv import load_dotenv
 import sys
 from os import getenv
-
+from dotenv import load_dotenv
 load_dotenv(override=True)
+
 
 class Settings(ABC):
     """

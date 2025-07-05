@@ -2,7 +2,7 @@
 External functionallities.
 """
 from app.infra.external.bita.sdk import BitaSDK
-from app.core.config import settings
+from app.infra.config import settings
 from os import getenv
 from app.utils import TEST
 

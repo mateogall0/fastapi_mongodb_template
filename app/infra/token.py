@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, UTC
 import jwt
-from app.core.config import settings
+from app.infra.config import settings
 from app.core.exceptions import Unauthorized
 
 

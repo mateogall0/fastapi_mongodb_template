@@ -2,7 +2,7 @@ import pytest, asyncio, pytest_asyncio
 from fastapi.testclient import TestClient
 from app.main import app
 from app.infra.db import init_db
-from app.core.config import settings
+from app.infra.config import settings
 from app.core.models import Base
 
 

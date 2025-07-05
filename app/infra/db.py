@@ -4,7 +4,7 @@ When imported, this module will initialize the mongoengine connectino to
 MongoDB using the desired URI
 """
 from motor.motor_asyncio import AsyncIOMotorClient
-from app.core.config import settings
+from .config import settings
 from beanie import init_beanie
 from app.utils import TEST
 

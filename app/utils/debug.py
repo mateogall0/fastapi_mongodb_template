@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-from app.core.config import settings
+from app.infra.config import settings
 import time
 from inspect import currentframe, getfile
 

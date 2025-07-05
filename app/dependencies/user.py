@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from fastapi import Depends, Request
 from app.infra.token import decode_payload
 from fastapi import HTTPException
