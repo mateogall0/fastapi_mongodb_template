@@ -14,3 +14,5 @@ async def test_basic_attrs(db):
     assert isinstance(ex.id, ObjectId)
     assert isinstance(ex.created_at, datetime)
     assert isinstance(ex.updated_at, datetime)
+    assert hasattr(ex, 'json')
+    assert hasattr(ex, 'dict')

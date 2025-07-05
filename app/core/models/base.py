@@ -1,11 +1,10 @@
 from datetime import datetime, timezone
-from pydantic import Field, BaseModel as BaseEmbedded
+from dataclasses import field
+from abc import ABC
 
+class Base(ABC):
+    created_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
-class Base(BaseEmbedded):
-    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-
-    class Settings:
-        is_root = True 
-
+class BaseEmbedded(ABC):
+    pass
