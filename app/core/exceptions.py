@@ -31,7 +31,7 @@ class PreconditionFailed(CoreException):
 class Unprocessable(CoreException):
     pass
 
-class NotImplemented(CoreException):
+class FeatureNotImplemented(CoreException):
     pass
 
 class PaymentRequired(CoreException):

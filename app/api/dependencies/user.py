@@ -27,7 +27,7 @@ def get_user_from_token(token: str):
     """
     User deserialization logic here
     """
-    raise NotImplementedError('Nothing to do with' + user_id)
+    raise NotImplementedError(f'Nothing to do with `{user_id}`')
 
 def get_user(authorization = Depends(security)):
     return get_user_from_token(authorization.credentials)

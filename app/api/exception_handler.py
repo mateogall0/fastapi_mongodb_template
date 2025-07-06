@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Request
 from app.core.exceptions import (Conflict, CoreException, BadRequest,
                                  Unauthorized, Forbidden, NotFound,
                                  NotAcceptable, PreconditionFailed,
-                                 NotImplemented, PaymentRequired, Timeout,
+                                 FeatureNotImplemented, PaymentRequired, Timeout,
                                  Teapot, Unprocessable,)
 
 
@@ -18,7 +18,7 @@ exc_to_status= {
     PreconditionFailed: 412,
     Teapot: 418,
     Unprocessable: 422,
-    NotImplemented: 501,
+    FeatureNotImplemented: 501,
 }
 
 def register_exceptions(app: FastAPI):
