@@ -9,25 +9,22 @@ Guide to write docs.
 ## Endpoints
 
 **Template:**
+```md
 | Method | Route | Description | Version |
 |:--|:--|:--|:--|
 | `GET` | `/v1/example` | Example description | 1.0.0 |
-
+```
 ## DB schema
 
 **Template:**
-
-
 ```md
-# v
-
 ## Name
 
-| Attribute Name | Data Type | Constraints | Description |
-|:--|:--|:--|:--|
-| +_id | ObjectId | Auto-Generated, Required, Unique, Immutable | Unique ID for the document among the collection |
-| +created_at | Timestamp | Required, Immutable, Default(NOW) | Time of indexation of document in database |
-| +updated_at | Timestamp | Auto-Updated, Required, Default(NOW) | Last time the document data was updated |
+| Attribute | Type | Constraints | Description | Version |
+|:--|:--|:--|:--|:--|
+| `_id` | `ObjectId` | Auto-Generated, Required, Unique, Immutable | Unique ID for the document among the collection | 1.0.0 |
+| `created_at` | `Timestamp` | Required, Immutable, Default(NOW) | Time of indexation of document in database | 1.0.0 |
+| `updated_at` | `Timestamp` | Auto-Updated, Required, Default(NOW) | Last time the document data was updated | 1.0.0 |
 ```
 
 **BSON data types:**
