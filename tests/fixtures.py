@@ -8,6 +8,7 @@ from app.core.models import Base
 
 API_V1_PREFIX = '/v1'
 
+
 @pytest_asyncio.fixture
 async def db():
     db, client_db = await init_db()

@@ -4,35 +4,41 @@ These are intended to be catched on the controller layer to then raise an HTTP
 exception.
 """
 
-class CoreExceptions(Exception): 
+class CoreException(Exception):
     pass
 
-class Conflict(CoreExceptions): 
+class BadRequest(CoreException):
     pass
 
-class NotFound(CoreExceptions): 
+class Unauthorized(CoreException):
     pass
 
-class PreconditionFail(CoreExceptions): 
+class Forbidden(CoreException):
     pass
 
-class Unexpected(CoreExceptions): 
+class NotFound(CoreException):
     pass
 
-class UserError(CoreExceptions): 
+class NotAcceptable(CoreException):
     pass
 
-class Unauthorized(CoreExceptions): 
+class Conflict(CoreException):
     pass
 
-class NotEnoughAmount(CoreExceptions): 
+class PreconditionFailed(CoreException):
     pass
 
-class Timeout(CoreExceptions): 
+class Unprocessable(CoreException):
     pass
 
-class RateLimited(CoreExceptions): 
+class NotImplemented(CoreException):
     pass
 
-class Forbidden(CoreExceptions): 
+class PaymentRequired(CoreException):
+    pass
+
+class Timeout(CoreException):
+    pass
+
+class Teapot(CoreException):
     pass
