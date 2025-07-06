@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from fastapi import FastAPI
 from .v1 import api_v1_router
 

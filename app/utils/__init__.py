@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from .debug import (
     DEBUG,
     DEBUG_ENV_NAMES,

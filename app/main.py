@@ -1,16 +1,6 @@
-#!/usr/bin/env python3
 from fastapi import FastAPI
-from app.routes import init_routes
-from app.middleware import init_middleware
-from app.infra.db import init_db
 from app.utils import DEBUG
-from contextlib import asynccontextmanager
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    await init_db()
-    yield
+from app.api import init_api, lifespan
 
 
 # fastapi instance
@@ -18,6 +8,5 @@ app = FastAPI(debug=DEBUG,
               title='API',
               description='Fastapi and MongoDB app',
               lifespan=lifespan)
-init_routes(app)
-init_middleware(app)
 
+init_api(app)

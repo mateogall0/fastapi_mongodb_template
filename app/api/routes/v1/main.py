@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
 from fastapi import APIRouter
-from app.handlers import main
+from app.api.handlers import main
 
 
 main_router = APIRouter(tags=['Main'])

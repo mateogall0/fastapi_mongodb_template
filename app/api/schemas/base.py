@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from pydantic import BaseModel, Field, ConfigDict, field_serializer
 from datetime import datetime
 from bson import ObjectId
