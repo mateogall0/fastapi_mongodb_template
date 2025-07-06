@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 from tests import db
 from app.core.models import Base
 from bson import ObjectId
