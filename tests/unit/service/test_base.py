@@ -5,7 +5,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_crud0(db):
-    from app.repository.base import MongoRepository
+    from app.infra.repository.base import MongoRepository
     class ExampleRepository(MongoRepository):
         pass
     from app.infra.db import ExampleBase

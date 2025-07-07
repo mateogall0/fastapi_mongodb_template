@@ -3,7 +3,7 @@ import pytest
 
 @pytest.mark.asyncio
 async def test_generic(db):
-    from app.repository.base import MongoRepository as BaseService
+    from app.infra.repository.base import MongoRepository as BaseService
     class ExampleService(BaseService):
         pass
     from app.infra.db import ExampleBase
