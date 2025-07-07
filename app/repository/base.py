@@ -1,4 +1,4 @@
-from app.infra.models import BaseDoc
+from app.infra.db.models import BaseDoc
 from datetime import datetime, timezone
 from bson import ObjectId
 from app.utils import clear_nones
