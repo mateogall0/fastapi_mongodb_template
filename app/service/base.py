@@ -1,7 +1,7 @@
 from app.core.repositories import Repository
 
 
-class CRUDService:
+class CRUDService(Repository):
     def __init__(self, repo: Repository):
         self.repo: Repository = repo
 
@@ -21,3 +21,18 @@ class MongoService(CRUDService):
     async def search(self, skip=0, limit=100, filters={}):
         return await self.repo.get_many(_ignore_none=True, **filters)
 
+class SocketRequestService:
+    async def handshake(self, *ag, **kw) -> dict:
+        return {'status': 'connected'}
+
+    async def ping(self, *ag, **kw) -> dict:
+        return {'status': 'pong'}
+
+    async def handle(self, action: str, payload: dict, *ag, **kw) -> dict:
+        action_s = str(action)
+        if action is None or action_s == 'handle':
+            return {'error': 'wrong action type'}
+        method = getattr(self, action_s, None)
+        if not method or not callable(method):
+            return {'error': f'unknown action `{action}`'}
+        return await method(payload)
