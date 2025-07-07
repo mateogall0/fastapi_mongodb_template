@@ -1,4 +1,5 @@
 from app.core.repositories import Repository
+from app.infra.socket import SingleRoom
 
 
 class CRUDService(Repository):
@@ -36,3 +37,20 @@ class SocketRequestService:
         if not method or not callable(method):
             return {'error': f'unknown action `{action}`'}
         return await method(payload)
+
+
+class SocketSingleRoomService:
+    def __init__(self, room_handler: SingleRoom) -> None:
+        self.room = room_handler
+
+    def connect(self, ws, doc):
+        self.room.connect(ws, doc)
+
+    def disconnect(self, ws):
+        self.room.disconnect(ws)
+
+    async def broadcast(self, payload: dict):
+        self.room.broadcast(payload)
+
+    async def message(self, doc, payload: dict):
+        self.room.send_to_doc(doc, payload)
