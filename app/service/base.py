@@ -1,8 +1,8 @@
 from app.core.repositories import Repository
-from app.infra.socket import SingleRoom
+from app.core.usecases import Service
 
 
-class CRUDService(Repository):
+class CRUDService(Service):
     def __init__(self, repo: Repository):
         self.repo: Repository = repo
 
@@ -18,11 +18,7 @@ class CRUDService(Repository):
     async def delete(self, obj):
         return await self.repo.delete(obj)
 
-class MongoService(CRUDService):
-    async def search(self, skip=0, limit=100, filters={}):
-        return await self.repo.get_many(_ignore_none=True, **filters)
-
-class SocketRequestService:
+class SocketRequestService(Service):
     async def handshake(self, *ag, **kw) -> dict:
         return {'status': 'connected'}
 
@@ -39,8 +35,8 @@ class SocketRequestService:
         return await method(payload)
 
 
-class SocketSingleRoomService:
-    def __init__(self, room_handler: SingleRoom) -> None:
+class SocketSingleRoomService(Service):
+    def __init__(self, room_handler) -> None:
         self.room = room_handler
 
     def connect(self, ws, doc):

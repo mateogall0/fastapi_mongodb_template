@@ -1,5 +1,5 @@
 from tests import db
-from app.service.base import MongoService, SocketRequestService
+from app.service.base import CRUDService as MongoService, SocketRequestService
 import pytest
 
 
@@ -21,9 +21,6 @@ async def test_crud0(db):
     assert stored.name == 'John Doe'
 
     date = str(stored.updated_at)
-
-    many = await service.search()
-    assert len(many) == 1
 
     updated = await service.update(stored, {'name': "John Doe 2"})
     assert updated.name == "John Doe 2"
