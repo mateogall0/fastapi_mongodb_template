@@ -1,5 +1,6 @@
 from fastapi import Depends, Request
-from app.core.exceptions import Unauthorized
+from app.infra.token import decode_payload
+from fastapi import HTTPException
 from fastapi.security import HTTPBearer as FastapiHTTPBearer, HTTPAuthorizationCredentials
 
 
@@ -12,13 +13,21 @@ class HTTPBearer(FastapiHTTPBearer):
     async def __call__(self, request: Request) -> HTTPAuthorizationCredentials:
         authorization: str = request.headers.get("Authorization")
         if not authorization:
-            raise Unauthorized
+            raise HTTPException(status_code=401, detail="Authorization header missing")
         return await super().__call__(request)
 
 security = HTTPBearer()
 
 def get_user_from_token(token: str):
-    raise NotImplementedError(f'Nothing to do with `{token}`')
+    payload = decode_payload(token)
+    if payload['type'] != 'session':
+        raise HTTPException(status_code=400,
+                            detail='Token of type session required')
+    user_id = payload['user_id']
+    """
+    User deserialization logic here
+    """
+    raise NotImplementedError(f'Nothing to do with `{user_id}`')
 
 def get_user(authorization = Depends(security)):
     return get_user_from_token(authorization.credentials)
