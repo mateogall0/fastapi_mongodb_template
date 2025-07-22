@@ -1,7 +1,7 @@
 from app.infra.db.models import BaseDoc
 from datetime import datetime, timezone
 from bson import ObjectId
-from app.utils import clear_nones
+from ..utils import clear_nones
 from app.core.repositories import Repository
 
 

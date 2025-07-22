@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.utils import DEBUG
+from app.infra.utils import DEBUG
 from app.api import init_api, lifespan
 
 
