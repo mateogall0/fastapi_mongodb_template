@@ -1,5 +1,27 @@
 # FastAPI and MongoDB template
 
+## Structure
+```
+app
+├── api
+│   ├── bootstrap
+│   ├── dependencies
+│   ├── handlers
+│   ├── middleware
+│   ├── routes
+│   │   └── v1
+│   └── schemas
+├── core
+│   └── models
+├── infra
+│   ├── db
+│   ├── external
+│   ├── repository
+│   ├── security
+│   └── utils
+└── service
+```
+
 ## Run
 ```bash
 uvicorn app.api.main:app
