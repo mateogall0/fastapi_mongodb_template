@@ -1,3 +1,0 @@
-[submodule "app/infra/external/bita"]
-	path = app/infra/external/bita
-	url = https://github.com/Bit-A/bita_sdk
