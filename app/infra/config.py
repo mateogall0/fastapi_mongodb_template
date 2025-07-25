@@ -7,8 +7,6 @@ from abc import ABC
 from typing import Any
 import sys
 from os import getenv
-from dotenv import load_dotenv
-load_dotenv(override=True)
 
 
 class Settings(ABC):

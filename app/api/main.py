@@ -3,6 +3,7 @@ from app.infra.utils import DEBUG
 from app.api import init_api, lifespan
 
 
+
 # fastapi instance
 app = FastAPI(debug=DEBUG,
               title='API',

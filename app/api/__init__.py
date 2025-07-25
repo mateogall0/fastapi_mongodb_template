@@ -1,3 +1,4 @@
+import app.api.env
 from fastapi import FastAPI
 from app.api.routes import init_routes
 from .middleware import init_middleware
