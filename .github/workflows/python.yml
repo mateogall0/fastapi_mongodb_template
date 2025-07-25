@@ -1,5 +1,5 @@
 # This workflow runs tests using the 
-name: Tests
+name: Python tests
 
 on:
   push:
