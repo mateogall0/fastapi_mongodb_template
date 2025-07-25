@@ -1,0 +1,9 @@
+-r requirements.txt
+
+
+pytest
+pytest-asyncio
+pydantic[email]
+freezegun
+ruff
+pytest-ruff

@@ -17,7 +17,6 @@ pluggy
 pydantic
 pydantic_core
 pymongo
-pytest
 python-dotenv
 sniffio
 SQLAlchemy
@@ -26,9 +25,4 @@ typing_extensions
 uvicorn
 bcrypt
 PyJWT
-pytest-asyncio
-freezegun
-pydantic[email]
 beanie
-ruff
-pytest-ruff
