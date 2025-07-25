@@ -1,0 +1,26 @@
+name: Test Dockerfile
+
+on: [push, pull_request]
+
+jobs:
+  dockerfile-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t pyapp:test .
+
+      - name: Run container and check it starts
+        run: |
+          container_id=$(docker run -d pyapp:test)
+          echo "Container started with ID $container_id"
+          sleep 5
+          docker logs $container_id
+          docker stop $container_id
+
+      - name: Run smoke test command inside container (optional)
+        run: |
+          docker run --rm pyapp:test echo "Container runs successfully"
