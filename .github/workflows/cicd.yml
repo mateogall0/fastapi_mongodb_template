@@ -1,0 +1,17 @@
+name: CI
+on:
+  workflow_run:
+    workflows:
+      - "Test Dockerfile"
+      - "Python tests"
+    types:
+      - completed
+
+jobs:
+  final:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Completed workflows, starting deployment..."
+
+    # Final CI/CD steps go here
+      
