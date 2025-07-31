@@ -22,3 +22,7 @@ class ModelResponse(BaseResponse):
         if isinstance(value, ObjectId):
             return str(value)
         return value
+
+class SearchQuery(BaseModel):
+    skip: int = Field(0, ge=0)
+    limit: int = Field(64, ge=1, le=100)

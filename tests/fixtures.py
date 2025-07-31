@@ -1,9 +1,9 @@
 import pytest, asyncio, pytest_asyncio
-from fastapi.testclient import TestClient
 from app.api.main import app
 from app.infra.db import init_db
 from app.infra.config import settings
 from app.core.models import Base
+from httpx import AsyncClient, ASGITransport
 
 
 API_V1_PREFIX = '/v1'
@@ -15,7 +15,8 @@ async def db():
     yield db, client_db
     await client_db.drop_database(db.name)
 
-@pytest.fixture
-def client(db):
-    with TestClient(app, base_url=f"http://testserver{API_V1_PREFIX}") as client:
-        yield client
+@pytest_asyncio.fixture
+async def client(db):
+    transport = ASGITransport(app=app)  # embeds the FastAPI app
+    async with AsyncClient(transport=transport, base_url=f"http://testserver{API_V1_PREFIX}") as ac:
+        yield ac

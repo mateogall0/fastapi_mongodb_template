@@ -17,3 +17,6 @@ class CRUDService(Service):
 
     async def delete(self, obj):
         return await self.repo.delete(obj)
+
+    async def search(self, skip=0, limit=100, **kw):
+        return await self.repo.search(skip=skip, limit=limit, **kw)
